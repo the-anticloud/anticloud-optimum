@@ -1,0 +1,818 @@
+{
+ "schema": "anticloud.tier-bench/1",
+ "project": "OPTIMUM",
+ "source": {
+  "repo_path": "E:\\fenta\\Downloads\\The Anticloud\\ANTICLOUD_REPOS\\CHIP_QUANTIZATION\\OPTIMUM\\UPSTREAM_CLONE",
+  "git": {
+   "head": "REMOVED_CONTAMINATED_SHA_PENDING_API_RESOLVE",
+   "url": "https://github.com/the-anticloud/OPENMRS_CORE.git",
+   "branch": "master",
+   "committed_at": "2026-09-29T11:06:59+04:00",
+   "sha_verified_from": "local clone .git file read (no .git dir in clone)"
+  }
+ },
+ "metrics": {
+  "files_total": 105,
+  "source_files_scanned": 75,
+  "lines_of_code": 16292,
+  "languages": {
+   ".py": 74,
+   ".mdx": 15,
+   ".md": 6,
+   "(none)": 3,
+   ".yml": 2,
+   ".in": 1,
+   ".toml": 1,
+   ".cfg": 1,
+   ".sh": 1,
+   ".txt": 1
+  }
+ },
+ "licence": {
+  "spdx": "Apache-2.0",
+  "class": "A",
+  "source_file": "LICENSE",
+  "redistribution_allowed": true
+ },
+ "dependencies": {
+  "count": 11,
+  "unique": 11,
+  "by_ecosystem": {
+   "pypi": 11
+  },
+  "list": [
+   {
+    "ecosystem": "pypi",
+    "name": "__version__",
+    "version": "= ",
+    "source_file": "setup.py",
+    "raw": "__version__ ="
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "transformers",
+    "version": ">=4.29",
+    "source_file": "setup.py",
+    "raw": "transformers>=4.29"
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "torch",
+    "version": ">=1.11",
+    "source_file": "setup.py",
+    "raw": "torch>=1.11"
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "huggingface_hub",
+    "version": ">=1.31.0",
+    "source_file": "setup.py",
+    "raw": "huggingface_hub>=1.31.0"
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "black",
+    "version": "~=23.1",
+    "source_file": "setup.py",
+    "raw": "black~=23.1"
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "ruff",
+    "version": "==0.1.5",
+    "source_file": "setup.py",
+    "raw": "ruff==0.1.5"
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "evaluate",
+    "version": ">=0.2.0",
+    "source_file": "setup.py",
+    "raw": "evaluate>=0.2.0"
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "optimum-habana",
+    "version": ">=1.17.0",
+    "source_file": "setup.py",
+    "raw": "optimum-habana>=1.17.0"
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "optimum-intel",
+    "version": ">=1.23.0",
+    "source_file": "setup.py",
+    "raw": "optimum-intel>=1.23.0"
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "optimum-quanto",
+    "version": ">=0.2.4",
+    "source_file": "setup.py",
+    "raw": "optimum-quanto>=0.2.4"
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "optimum-cli",
+    "version": "=optimum.commands.optimum_cli:main",
+    "source_file": "setup.py",
+    "raw": "optimum-cli=optimum.commands.optimum_cli:main"
+   }
+  ]
+ },
+ "owasp_top10": {
+  "total_findings": 95,
+  "files_with_findings": 73,
+  "severity": {
+   "high": 10,
+   "medium": 0,
+   "low": 85
+  },
+  "categories": {
+   "A01-BrokenAccessControl": {
+    "count": 0,
+    "findings": []
+   },
+   "A02-CryptographicFailures": {
+    "count": 1,
+    "findings": [
+     {
+      "severity": "high",
+      "file": "optimum/utils/input_generators.py",
+      "line": 1838,
+      "cwe": "CWE-338",
+      "snippet": "random_idx = random.randint(1, self.sequence_length - 1)\n                int_tensor[idx][random_idx] = self.eos_token_id"
+     }
+    ]
+   },
+   "A03-Injection": {
+    "count": 9,
+    "findings": [
+     {
+      "severity": "high",
+      "file": "tests/fx/optimization/test_transformations.py",
+      "line": 91,
+      "cwe": "CWE-95",
+      "snippet": "model.eval()"
+     },
+     {
+      "severity": "high",
+      "file": "tests/cli/test_cli.py",
+      "line": 34,
+      "cwe": "CWE-78",
+      "snippet": "subprocess.run(\"optimum-cli env\", shell=True, check=True)"
+     },
+     {
+      "severity": "high",
+      "file": "optimum/runs_base.py",
+      "line": 77,
+      "cwe": "CWE-78",
+      "snippet": "cpu_info = subprocess.check_output([cpu_info_command()], shell=True).decode(\"utf-8\")"
+     },
+     {
+      "severity": "high",
+      "file": "optimum/utils/testing_utils.py",
+      "line": 201,
+      "cwe": "CWE-78",
+      "snippet": "os.system(f\"rmdir /S /Q {dirpath}\")"
+     },
+     {
+      "severity": "high",
+      "file": "optimum/gptq/eval.py",
+      "line": 17,
+      "cwe": "CWE-95",
+      "snippet": "model = model.eval()"
+     },
+     {
+      "severity": "high",
+      "file": "optimum/gptq/quantizer.py",
+      "line": 358,
+      "cwe": "CWE-95",
+      "snippet": "model.eval()"
+     },
+     {
+      "severity": "high",
+      "file": "optimum/fx/parallelization/api.py",
+      "line": 116,
+      "cwe": "CWE-95",
+      "snippet": "model.eval()"
+     },
+     {
+      "severity": "high",
+      "file": "optimum/fx/optimization/transformations.py",
+      "line": 499,
+      "cwe": "CWE-95",
+      "snippet": ">>> model.eval()  # doctest: +IGNORE_RESULT"
+     },
+     {
+      "severity": "high",
+      "file": "optimum/exporters/utils.py",
+      "line": 462,
+      "cwe": "CWE-95",
+      "snippet": "vocoder = SpeechT5HifiGan.from_pretrained(model_kwargs[\"vocoder\"]).eval()"
+     }
+    ]
+   },
+   "A04-InsecureDesign": {
+    "count": 15,
+    "findings": [
+     {
+      "severity": "low",
+      "file": "tests/pipelines/test_pipelines.py",
+      "line": 221,
+      "cwe": "CWE-",
+      "snippet": "# TODO: Enable when fixed in optimum-onnx"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/modeling_base.py",
+      "line": 87,
+      "cwe": "CWE-",
+      "snippet": "# TODO: Should be removed when we no longer use OptimizedModel for everything"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/runs_base.py",
+      "line": 252,
+      "cwe": "CWE-",
+      "snippet": "# TODO support grayscale?"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/utils/constant.py",
+      "line": 28,
+      "cwe": "CWE-",
+      "snippet": "ONNX_WEIGHTS_NAME = \"model.onnx\"  # TODO: remove and use the optimum-onnx one"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/utils/import_utils.py",
+      "line": 33,
+      "cwe": "CWE-",
+      "snippet": "ORT_QUANTIZE_MINIMUM_VERSION = version.parse(\"1.4.0\")  # TODO: remove as optimm-onnx requires >=1.15.0"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/utils/input_generators.py",
+      "line": 754,
+      "cwe": "CWE-",
+      "snippet": "# TODO: should it just be merged to DummyTextInputGenerator?"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/utils/normalized_config.py",
+      "line": 159,
+      "cwe": "CWE-",
+      "snippet": "# TODO: this config is bug prone, as `encoder_attention_heads` and `decoder_attention_heads` may be different"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/utils/preprocessing/image_classification.py",
+      "line": 113,
+      "cwe": "CWE-",
+      "snippet": "# TODO: do we want to do that here?"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/utils/preprocessing/text_classification.py",
+      "line": 114,
+      "cwe": "CWE-",
+      "snippet": "# TODO: do we want to do that here?"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/utils/preprocessing/token_classification.py",
+      "line": 98,
+      "cwe": "CWE-",
+      "snippet": "# TODO: do we want to do that here?"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/fx/parallelization/api.py",
+      "line": 115,
+      "cwe": "CWE-",
+      "snippet": "# TODO: remove this once support training-time trace"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/fx/parallelization/op_registry/op_handlers.py",
+      "line": 418,
+      "cwe": "CWE-",
+      "snippet": "# TODO: append all-gather comm ops before all parallelized output nodes if instructed."
+     },
+     {
+      "severity": "low",
+      "file": "optimum/exporters/tasks.py",
+      "line": 726,
+      "cwe": "CWE-",
+      "snippet": "# TODO: maybe implement that."
+     },
+     {
+      "severity": "low",
+      "file": "optimum/exporters/utils.py",
+      "line": 461,
+      "cwe": "CWE-",
+      "snippet": "# TODO: more flexibility in the vocoder class?"
+     },
+     {
+      "severity": "low",
+      "file": "docs/combine_docs.py",
+      "line": 101,
+      "cwe": "CWE-",
+      "snippet": "Extends the table of content with a section generated by the original optimum-xxx."
+     }
+    ]
+   },
+   "A05-SecurityMisconfiguration": {
+    "count": 0,
+    "findings": []
+   },
+   "A06-VulnerableComponents": {
+    "count": 1,
+    "findings": [
+     {
+      "severity": "low",
+      "file": "setup.py",
+      "line": 40,
+      "cwe": "CWE-1104",
+      "snippet": "QUALITY_REQUIRE = [\"black~=23.1\", \"ruff==0.1.5\"]"
+     }
+    ]
+   },
+   "A07-AuthFailures": {
+    "count": 0,
+    "findings": []
+   },
+   "A08-SoftwareDataIntegrity": {
+    "count": 69,
+    "findings": [
+     {
+      "severity": "low",
+      "file": "tests/utils/prepare_for_doc_test.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "tests/utils/test_dummpy_input_generators.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "tests/utils/test_task_processors.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "tests/pipelines/test_pipelines.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "tests/gptq/test_quantization.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "tests/fx/parallelization/dist_utils.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "tests/fx/parallelization/test_tensor_parallel.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "tests/fx/optimization/test_transformations.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "tests/exporters/common/test_tasks_manager.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "tests/common/test_configuration_utils.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "tests/cli/cli_with_custom_command.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "tests/cli/test_cli.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/configuration_utils.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#      http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/conftest.py",
+      "line": 7,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/modeling_base.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/subpackages.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/version.py",
+      "line": 7,
+      "cwe": "CWE-319",
+      "snippet": "#      http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/utils/constant.py",
+      "line": 7,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/utils/doc.py",
+      "line": 7,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/utils/file_utils.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/utils/import_utils.py",
+      "line": 7,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/utils/input_generators.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/utils/logging.py",
+      "line": 9,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/utils/modeling_utils.py",
+      "line": 7,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     },
+     {
+      "severity": "low",
+      "file": "optimum/utils/normalized_config.py",
+      "line": 8,
+      "cwe": "CWE-319",
+      "snippet": "#     http://www.apache.org/licenses/LICENSE-2.0"
+     }
+    ]
+   },
+   "A09-LoggingMonitoringFailures": {
+    "count": 0,
+    "findings": []
+   },
+   "A10-SSRF": {
+    "count": 0,
+    "findings": []
+   }
+  }
+ },
+ "owasp_llm_top10": {
+  "total_findings": 16,
+  "files_with_findings": 16,
+  "severity": {
+   "high": 1,
+   "medium": 15,
+   "low": 0
+  },
+  "categories": {
+   "LLM01-PromptInjection": {
+    "count": 0,
+    "findings": []
+   },
+   "LLM02-SensitiveInfoDisclosure": {
+    "count": 1,
+    "findings": [
+     {
+      "severity": "high",
+      "file": "optimum/utils/testing_utils.py",
+      "line": 92,
+      "cwe": "CWE-798",
+      "snippet": "# is HF_AUTH_TOKEN used instead of HF_TOKEN to avoid huggingface_hub picking it up ?"
+     }
+    ]
+   },
+   "LLM03-SupplyChain": {
+    "count": 15,
+    "findings": [
+     {
+      "severity": "medium",
+      "file": "tests/utils/test_dummpy_input_generators.py",
+      "line": 107,
+      "cwe": "CWE-494",
+      "snippet": "config = AutoConfig.from_pretrained(model_name)"
+     },
+     {
+      "severity": "medium",
+      "file": "tests/utils/test_task_processors.py",
+      "line": 43,
+      "cwe": "CWE-494",
+      "snippet": "CONFIG = AutoConfig.from_pretrained(TEXT_MODEL_NAME)"
+     },
+     {
+      "severity": "medium",
+      "file": "tests/pipelines/test_pipelines.py",
+      "line": 247,
+      "cwe": "CWE-494",
+      "snippet": "tokenizer = AutoTokenizer.from_pretrained(\"distilbert-base-cased\")"
+     },
+     {
+      "severity": "medium",
+      "file": "tests/gptq/test_quantization.py",
+      "line": 73,
+      "cwe": "CWE-494",
+      "snippet": "cls.tokenizer = AutoTokenizer.from_pretrained(cls.model_name)"
+     },
+     {
+      "severity": "medium",
+      "file": "tests/fx/optimization/test_transformations.py",
+      "line": 90,
+      "cwe": "CWE-494",
+      "snippet": "model = BertModel.from_pretrained(_MODEL_NAME, attn_implementation=\"eager\")"
+     },
+     {
+      "severity": "medium",
+      "file": "tests/common/test_configuration_utils.py",
+      "line": 39,
+      "cwe": "CWE-494",
+      "snippet": "config_second = FakeConfig.from_pretrained(tmpdirname)"
+     },
+     {
+      "severity": "medium",
+      "file": "optimum/modeling_base.py",
+      "line": 242,
+      "cwe": "CWE-494",
+      "snippet": "config = AutoConfig.from_pretrained("
+     },
+     {
+      "severity": "medium",
+      "file": "optimum/quantization_base.py",
+      "line": 12,
+      "cwe": "CWE-494",
+      "snippet": "def from_pretrained("
+     },
+     {
+      "severity": "medium",
+      "file": "optimum/utils/save_utils.py",
+      "line": 33,
+      "cwe": "CWE-494",
+      "snippet": "AutoTokenizer.from_pretrained(src_name_or_path, subfolder=subfolder, trust_remote_code=trust_remote_code)"
+     },
+     {
+      "severity": "medium",
+      "file": "optimum/pipelines/__init__.py",
+      "line": 186,
+      "cwe": "CWE-494",
+      "snippet": "Additional dictionary of keyword arguments passed along to the model's `from_pretrained(...,"
+     },
+     {
+      "severity": "medium",
+      "file": "optimum/gptq/quantizer.py",
+      "line": 406,
+      "cwe": "CWE-494",
+      "snippet": "tokenizer = AutoTokenizer.from_pretrained(tokenizer)"
+     },
+     {
+      "severity": "medium",
+      "file": "optimum/fx/parallelization/api.py",
+      "line": 98,
+      "cwe": "CWE-494",
+      "snippet": "model_config, kwargs = AutoConfig.from_pretrained("
+     },
+     {
+      "severity": "medium",
+      "file": "optimum/fx/optimization/transformations.py",
+      "line": 41,
+      "cwe": "CWE-494",
+      "snippet": ">>> model = BertModel.from_pretrained(\"bert-base-uncased\")"
+     },
+     {
+      "severity": "medium",
+      "file": "optimum/exporters/tasks.py",
+      "line": 1126,
+      "cwe": "CWE-494",
+      "snippet": "Keyword arguments to pass to the model `.from_pretrained()` method."
+     },
+     {
+      "severity": "medium",
+      "file": "optimum/exporters/utils.py",
+      "line": 462,
+      "cwe": "CWE-494",
+      "snippet": "vocoder = SpeechT5HifiGan.from_pretrained(model_kwargs[\"vocoder\"]).eval()"
+     }
+    ]
+   },
+   "LLM04-DataPoisoning": {
+    "count": 0,
+    "findings": []
+   },
+   "LLM05-ImproperOutputHandling": {
+    "count": 0,
+    "findings": []
+   },
+   "LLM06-ExcessiveAgency": {
+    "count": 0,
+    "findings": []
+   },
+   "LLM07-SystemPromptLeak": {
+    "count": 0,
+    "findings": []
+   },
+   "LLM08-VectorEmbeddingWeaknesses": {
+    "count": 0,
+    "findings": []
+   },
+   "LLM09-Misinformation": {
+    "count": 0,
+    "findings": []
+   },
+   "LLM10-UnboundedConsumption": {
+    "count": 0,
+    "findings": []
+   }
+  }
+ },
+ "sbom": {
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:1b22514d-ea0d-53e0-a878-fb09feba4d7a",
+  "version": 1,
+  "metadata": {
+   "timestamp": "2026-10-06T10:18:41Z",
+   "component": {
+    "type": "application",
+    "name": "OPTIMUM",
+    "version": "83b357604d34",
+    "bom-ref": "pkg:generic/anticloud/OPTIMUM@83b357604d34",
+    "purl": "pkg:generic/anticloud/OPTIMUM@83b357604d34",
+    "licenses": [
+     {
+      "license": {
+       "id": "Apache-2.0"
+      }
+     }
+    ]
+   },
+   "properties": [
+    {
+     "name": "anticloud:source-commit",
+     "value": "REMOVED_CONTAMINATED_SHA_PENDING_API_RESOLVE"
+    },
+    {
+     "name": "anticloud:source-url",
+     "value": "https://github.com/the-anticloud/OPENMRS_CORE.git"
+    },
+    {
+     "name": "anticloud:tier",
+     "value": "tier-agent"
+    }
+   ]
+  },
+  "components": [
+   {
+    "type": "library",
+    "name": "__version__",
+    "version": "= ",
+    "purl": "pkg:pypi/--version--@",
+    "bom-ref": "pypi/__version__@= "
+   },
+   {
+    "type": "library",
+    "name": "transformers",
+    "version": ">=4.29",
+    "purl": "pkg:pypi/transformers@4.29",
+    "bom-ref": "pypi/transformers@>=4.29"
+   },
+   {
+    "type": "library",
+    "name": "torch",
+    "version": ">=1.11",
+    "purl": "pkg:pypi/torch@1.11",
+    "bom-ref": "pypi/torch@>=1.11"
+   },
+   {
+    "type": "library",
+    "name": "huggingface_hub",
+    "version": ">=1.31.0",
+    "purl": "pkg:pypi/huggingface-hub@1.31.0",
+    "bom-ref": "pypi/huggingface_hub@>=1.31.0"
+   },
+   {
+    "type": "library",
+    "name": "black",
+    "version": "~=23.1",
+    "purl": "pkg:pypi/black@23.1",
+    "bom-ref": "pypi/black@~=23.1"
+   },
+   {
+    "type": "library",
+    "name": "ruff",
+    "version": "==0.1.5",
+    "purl": "pkg:pypi/ruff@0.1.5",
+    "bom-ref": "pypi/ruff@==0.1.5"
+   },
+   {
+    "type": "library",
+    "name": "evaluate",
+    "version": ">=0.2.0",
+    "purl": "pkg:pypi/evaluate@0.2.0",
+    "bom-ref": "pypi/evaluate@>=0.2.0"
+   },
+   {
+    "type": "library",
+    "name": "optimum-habana",
+    "version": ">=1.17.0",
+    "purl": "pkg:pypi/optimum-habana@1.17.0",
+    "bom-ref": "pypi/optimum-habana@>=1.17.0"
+   },
+   {
+    "type": "library",
+    "name": "optimum-intel",
+    "version": ">=1.23.0",
+    "purl": "pkg:pypi/optimum-intel@1.23.0",
+    "bom-ref": "pypi/optimum-intel@>=1.23.0"
+   },
+   {
+    "type": "library",
+    "name": "optimum-quanto",
+    "version": ">=0.2.4",
+    "purl": "pkg:pypi/optimum-quanto@0.2.4",
+    "bom-ref": "pypi/optimum-quanto@>=0.2.4"
+   },
+   {
+    "type": "library",
+    "name": "optimum-cli",
+    "version": "=optimum.commands.optimum_cli:main",
+    "purl": "pkg:pypi/optimum-cli@optimum.commands.optimum_cli:main",
+    "bom-ref": "pypi/optimum-cli@=optimum.commands.optimum_cli:main"
+   }
+  ]
+ },
+ "elapsed_seconds": 28.06
+}
