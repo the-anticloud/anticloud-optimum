@@ -1,0 +1,124 @@
+{
+ "bomFormat": "CycloneDX",
+ "specVersion": "1.5",
+ "serialNumber": "urn:uuid:1b22514d-ea0d-53e0-a878-fb09feba4d7a",
+ "version": 1,
+ "metadata": {
+  "timestamp": "2026-10-06T10:18:41Z",
+  "component": {
+   "type": "application",
+   "name": "OPTIMUM",
+   "version": "83b357604d34",
+   "bom-ref": "pkg:generic/anticloud/OPTIMUM@83b357604d34",
+   "purl": "pkg:generic/anticloud/OPTIMUM@83b357604d34",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ]
+  },
+  "properties": [
+   {
+    "name": "anticloud:source-commit",
+    "value": "REMOVED_CONTAMINATED_SHA_PENDING_API_RESOLVE"
+   },
+   {
+    "name": "anticloud:source-url",
+    "value": "https://github.com/the-anticloud/OPENMRS_CORE.git"
+   },
+   {
+    "name": "anticloud:tier",
+    "value": "tier-agent"
+   }
+  ]
+ },
+ "components": [
+  {
+   "type": "library",
+   "name": "__version__",
+   "version": "= ",
+   "purl": "pkg:pypi/--version--@",
+   "bom-ref": "pypi/__version__@= "
+  },
+  {
+   "type": "library",
+   "name": "transformers",
+   "version": ">=4.29",
+   "purl": "pkg:pypi/transformers@4.29",
+   "bom-ref": "pypi/transformers@>=4.29"
+  },
+  {
+   "type": "library",
+   "name": "torch",
+   "version": ">=1.11",
+   "purl": "pkg:pypi/torch@1.11",
+   "bom-ref": "pypi/torch@>=1.11"
+  },
+  {
+   "type": "library",
+   "name": "huggingface_hub",
+   "version": ">=1.31.0",
+   "purl": "pkg:pypi/huggingface-hub@1.31.0",
+   "bom-ref": "pypi/huggingface_hub@>=1.31.0"
+  },
+  {
+   "type": "library",
+   "name": "black",
+   "version": "~=23.1",
+   "purl": "pkg:pypi/black@23.1",
+   "bom-ref": "pypi/black@~=23.1"
+  },
+  {
+   "type": "library",
+   "name": "ruff",
+   "version": "==0.1.5",
+   "purl": "pkg:pypi/ruff@0.1.5",
+   "bom-ref": "pypi/ruff@==0.1.5"
+  },
+  {
+   "type": "library",
+   "name": "evaluate",
+   "version": ">=0.2.0",
+   "purl": "pkg:pypi/evaluate@0.2.0",
+   "bom-ref": "pypi/evaluate@>=0.2.0"
+  },
+  {
+   "type": "library",
+   "name": "optimum-habana",
+   "version": ">=1.17.0",
+   "purl": "pkg:pypi/optimum-habana@1.17.0",
+   "bom-ref": "pypi/optimum-habana@>=1.17.0"
+  },
+  {
+   "type": "library",
+   "name": "optimum-intel",
+   "version": ">=1.23.0",
+   "purl": "pkg:pypi/optimum-intel@1.23.0",
+   "bom-ref": "pypi/optimum-intel@>=1.23.0"
+  },
+  {
+   "type": "library",
+   "name": "optimum-quanto",
+   "version": ">=0.2.4",
+   "purl": "pkg:pypi/optimum-quanto@0.2.4",
+   "bom-ref": "pypi/optimum-quanto@>=0.2.4"
+  },
+  {
+   "type": "library",
+   "name": "optimum-cli",
+   "version": "=optimum.commands.optimum_cli:main",
+   "purl": "pkg:pypi/optimum-cli@optimum.commands.optimum_cli:main",
+   "bom-ref": "pypi/optimum-cli@=optimum.commands.optimum_cli:main"
+  }
+ ],
+ "source": {
+  "git": {
+   "head": null,
+   "url": null,
+   "sha_unverified": true,
+   "note": "contamination removed; resolve via GitHub API before quoting"
+  }
+ }
+}
